@@ -104,7 +104,7 @@ header {
 }
 
 .carrossel {
-    background: green;
+    background: var(--fundo1);
 }
 
 .catalogo {
@@ -122,6 +122,9 @@ header {
 .footer {
     background: pink;
 }
+
+
+
 
 
 
