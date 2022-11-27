@@ -7,8 +7,8 @@
 
 
 :root {
-    --fonteTexto: font-family: 'Satisfy', cursive;
-    --fonteTitulo: font-family: 'Satisfy', cursive;
+    --fonteTexto:  'Satisfy', cursive;
+    --fonteTitulo:'Satisfy', cursive;
     --fundo1: white;
     --fundoApresentacao: rgba(107, 45, 45, 0.356);
     --fundoCards: rgba(148, 233, 233, 0.295);
@@ -129,8 +129,9 @@ header {
 
 
 
-@media screen and (max-width: 730px) {
+@media screen and (max-width: 980px) {
     .nav-bar {
+        font-family: 'Satisfy', cursive;
         padding: 1.5rem 4rem;
     }
 
@@ -161,6 +162,7 @@ header {
         cursor: pointer;
     }
     .menuflexitem{
+        font-family: 'Satisfy', cursive;
         align-items: flex-end;
         display: flex;
     }

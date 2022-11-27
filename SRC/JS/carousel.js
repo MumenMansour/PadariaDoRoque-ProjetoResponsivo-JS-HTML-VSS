@@ -90,35 +90,27 @@ class DraggingEvent {
 class CardCarousel extends DraggingEvent {
   constructor(container, controller = undefined) {
     super(container)
-    
     // DOM elements
     this.container = container
     this.controllerElement = controller
     this.cards = container.querySelectorAll(".card")
-    
     // Carousel data
     this.centerIndex = (this.cards.length - 1) / 2;
     this.cardWidth = this.cards[0].offsetWidth / this.container.offsetWidth * 100
     this.xScale = {};
-    
     // Resizing
     window.addEventListener("resize", this.updateCardWidth.bind(this))
-    
     if (this.controllerElement) {
       this.controllerElement.addEventListener("keydown", this.controller.bind(this))      
     }
-
-    
     // Initializers
     this.build()
-    
     // Bind dragging event
     super.getDistance(this.moveCards.bind(this))
   }
   
   updateCardWidth() {
     this.cardWidth = this.cards[0].offsetWidth / this.container.offsetWidth * 100
-    
     this.build()
   }
   
@@ -128,12 +120,8 @@ class CardCarousel extends DraggingEvent {
       const scale = this.calcScale(x)
       const scale2 = this.calcScale2(x)
       const zIndex = -(Math.abs(i - this.centerIndex))
-      
       const leftPos = this.calcPos(x, scale2)
-     
-      
-      this.xScale[x] = this.cards[i]
-      
+      this.xScale[x] = this.cards[i] 
       this.updateCards(this.cards[i], {
         x: x,
         scale: scale,
@@ -146,7 +134,6 @@ class CardCarousel extends DraggingEvent {
   
   controller(e) {
     const temp = {...this.xScale};
-      
       if (e.keyCode === 39) {
         // Left arrow
         for (let x in this.xScale) {
@@ -157,10 +144,8 @@ class CardCarousel extends DraggingEvent {
       }
       
       if (e.keyCode == 37) {
-        // Right arrow
         for (let x in this.xScale) {
           const newX = (parseInt(x) + 1 > this.centerIndex) ? -this.centerIndex : parseInt(x) + 1;
-
           temp[newX] = this.xScale[x]
         }
       }
